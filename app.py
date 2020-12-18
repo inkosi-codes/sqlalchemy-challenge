@@ -7,11 +7,12 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, desc
 
 from flask import Flask, jsonify, render_template
+from datetime import datetime
 
 #-----------------------------------------------#
 #       Create a connection to the Database     #
 #-----------------------------------------------#
-engine = create_engine("sqlite:///hawaii.sqlite")
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
@@ -31,8 +32,11 @@ session = Session(engine)
 #-----------------------------------------------#
 #              Global Variables                 #
 #-----------------------------------------------#
-yeardate = (dt.datetime(2017,8,23) - dt.timedelta(days=1*365)).strftime("%Y-%m-%d")
+last_date = session.query(Measurement.date).order_by(Measurement.date.desc()).first()
+last_date = datetime.strptime(last_date[0], '%Y-%m-%d')
 
+yeardate = (last_date - dt.timedelta(days=1*365)).strftime("%Y-%m-%d")
+session.close()
 #-----------------------------------------------#
 #                   Routes                      # 
 #-----------------------------------------------#
