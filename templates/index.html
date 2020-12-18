@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLAlchemy Challenge Accepted</title>
+    <style>
+        #title-header {
+            text-align: center;
+        }
+        #main-container{
+            display: flex;
+        }
+
+        #about-project {
+            font-size: large;
+            border: 1px solid black;
+            width: 250PX;
+            float: left;
+            padding-right: 10PX;
+        }
+        #item-list{
+            border:1px solid black;
+            width: 250px;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title-header">Welcome!!! The Challenge has been accepted.</h1>
+    <hr>
+    <div id="main-container">
+    <div id="about-project">
+        <p><strong>About the Project:</strong> The objective of this challenge was to design a Flask Webapp API that users would be able
+            to navigate through using routes built </p>
+    </div>
+    <div id="item-list">
+        {% for item in data %}
+        <ul>
+            <li>{{ item }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+</body>
+
+</html>
