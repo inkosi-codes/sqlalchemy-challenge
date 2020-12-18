@@ -129,18 +129,19 @@ def Start_date(start_date):
     return jsonify(startdate_dict)
 
 @app.route("/api/v1.0/<start_date>/<end_date>")
-def Start_end_date(start_date, end_date):
-    
+def two_dates(start_date, end_date):
+
     # Perform the dynamic query based on start date and store the results
-    results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
-                filter(Measurement.date >= start_date).filter(Measurement.date <= end_date).all()
+    startend_results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+                        filter(Measurement.date >= start_date).\
+                        filter(Measurement.date <= end_date).all()
 
   
     #Build dataset into a dictionary
     result_dict = {}
-    result_dict["min_temp"] = results[0][0]
-    result_dict["avg_temp"] = round(results[0][1],2)
-    result_dict["max_temp"] = results[0][2]
+    result_dict["min_temp"] = startend_results[0][0]
+    result_dict["avg_temp"] = startend_results[0][1]
+    result_dict["max_temp"] = startend_results[0][2]
     
     #Close out the current thread
     session.close()

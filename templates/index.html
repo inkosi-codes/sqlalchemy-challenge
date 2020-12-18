@@ -16,7 +16,7 @@
         #about-project {
             font-size: large;
             border: 1px solid black;
-            width: 250PX;
+            width: 290PX;
             float: left;
             padding-right: 10PX;
         }
@@ -38,12 +38,12 @@
     <div id="about-project">
         <p><strong>About the Project:</strong> The objective of this challenge was to design a Flask Webapp API that users would be able
             to navigate through using the following routes.</p>
-            <p><strong style="color: red;">Note:</strong> When using the last two API calls, please enclose your dates in Quotation Marks ("")</p>
+            <p><strong style="color: red;">Note:</strong> When using the last two API calls, please format your dates as such, Date Format: yyyy-mm-dd or for range: yyyy-mm-dd/yyyy-mm-dd</p>
     </div>
     <div id="item-list">
         <h3>Please use the following API link format to pull data from our Database</h3>
         <p><strong>Example:</strong> "http://127.0.0.1:5000/api/v1.0/*Enter-Start-Date-Here*"</p>
-        <p><strong>Would be used as follows:</strong> <a href='http://127.0.0.1:5000/api/v1.0/"2016-08-25"'>http://127.0.0.1:5000/api/v1.0/"2016-08-25"</a></p>
+        <p><strong>Would be used as follows:</strong> <a href='http://127.0.0.1:5000/api/v1.0/2016-08-25'>http://127.0.0.1:5000/api/v1.0/2016-08-25</a></p>
         {% for item in data %}
         <ul>
             <li>{{ item }}</li>
